@@ -19,12 +19,12 @@ dotfiles/
 ├── starship/.config/starship.toml         双行 prompt · SSH hostname
 └── fish/.config/fish/
     ├── config.fish                        入口（仅关闭 greeting）
-    ├── conf.d/                            模块化配置，自动加载
+    ├── conf.d/                            模块化配置，按字母序加载
     │   ├── 00-env.fish                    PATH · EDITOR · XDG
+    │   ├── 05-os-darwin.fish              Homebrew · pbcopy（必须早于 20-tools）
+    │   ├── 05-os-linux.fish               ROS2 · CUDA · wl-copy
     │   ├── 10-aliases.fish                git abbr · 现代 CLI 替换
-    │   ├── 20-tools.fish                  starship · zoxide · fzf · direnv
-    │   ├── 50-os-darwin.fish              Homebrew · pbcopy
-    │   └── 50-os-linux.fish               ROS2 · CUDA · wl-copy
+    │   └── 20-tools.fish                  starship · zoxide · fzf · direnv
     └── functions/
         ├── mkcd.fish
         └── extract.fish
