@@ -6,6 +6,7 @@ theme = iTerm2 Solarized Light
 
 # ── Font ────────────────────────────────────────────────────
 font-family = JetBrainsMono Nerd Font
+font-family = Sarasa Mono SC
 font-size = 14
 font-feature = +liga
 font-feature = +calt
