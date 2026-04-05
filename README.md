@@ -178,6 +178,11 @@ A: `conf.d/50-os-linux.fish` 需要 `bass`（fish 的 bash 兼容层）来 sourc
 **Q: 修改了 dotfiles 但没生效**
 A: 文件是 symlink 指向仓库，改后立即生效。Fish 配置变更执行 `exec fish` 重载；Ghostty 配置改动仅影响**新窗口**。
 
+**Q: Ghostty 主题/字体改了但没生效（macOS）**
+A: Ghostty 在 macOS 上还会读 `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`，
+这个路径**优先级高于** `~/.config/ghostty/config`（通常由 GUI 菜单写入）。`install.sh` 会
+自动在这里也建 symlink 指向仓库。如果之后又用 GUI 菜单改了主题，需重跑 `./install.sh ghostty`。
+
 ---
 
 ## 版本同步工作流

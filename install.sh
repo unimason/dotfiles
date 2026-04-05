@@ -81,6 +81,14 @@ install_package() {
         local rel="${src#$pkg_dir/}"
         link_file "$src" "$HOME/$rel"
     done < <(find "$pkg_dir" -type f -print0)
+
+    # Ghostty on macOS also reads from ~/Library/Application Support/.../config.ghostty
+    # which takes precedence over ~/.config/ghostty/config. Link both.
+    if [[ "$pkg" == "ghostty" && "$(uname)" == "Darwin" ]]; then
+        local mac_cfg="$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
+        local repo_cfg="$pkg_dir/.config/ghostty/config"
+        link_file "$repo_cfg" "$mac_cfg"
+    fi
 }
 
 echo "dotfiles: $DOTFILES_DIR"
