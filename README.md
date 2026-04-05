@@ -189,3 +189,81 @@ git pull                     # 拉最新
 ./install.sh                 # 应用（新文件自动 symlink；已 symlink 的无需操作）
 exec fish                    # 重载 shell
 ```
+
+---
+
+## GitHub CLI (`gh`) 速查
+
+本仓库用 `gh` 做建仓/鉴权，比 git 原生更省事。
+
+### 新机器初始化
+
+```bash
+# 安装
+brew install gh                              # macOS
+sudo apt install gh                          # Debian/Ubuntu（或 https://cli.github.com）
+
+# 登录（交互式：选 github.com → HTTPS → 浏览器授权）
+gh auth login
+
+# 验证
+gh auth status
+```
+
+登录后 `git clone/pull/push` 走 HTTPS 自动用 token 认证，无需每次输密码。
+
+### 日常命令
+
+```bash
+# 仓库
+gh repo view --web                           # 浏览器打开当前仓库
+gh repo clone unimason/dotfiles              # clone（自动用你登录的账号）
+gh repo create <name> --public --source=. --remote=origin --push
+
+# 提交 / PR
+gh pr create --fill --web                    # 从当前 branch 建 PR
+gh pr list                                   # 列 PR
+gh pr view 123 --web                         # 看 PR
+gh pr checkout 123                           # 本地切到别人的 PR
+
+# Issue
+gh issue list
+gh issue create --title "..." --body "..."
+
+# CI
+gh run list                                  # Actions 运行历史
+gh run watch                                 # 实时跟踪最新一次
+
+# SSH key 管理
+gh ssh-key list
+gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(hostname -s)"
+```
+
+### 协议切换（HTTPS ↔ SSH）
+
+当前仓库用 HTTPS（代理环境下更稳）。未来要切 SSH：
+
+```bash
+# 改默认协议（影响未来 gh clone 的仓库）
+gh config set git_protocol ssh -h github.com
+
+# 改当前仓库的 remote
+git remote set-url origin git@github.com:unimason/dotfiles.git
+```
+
+### 增加 token 权限 scope
+
+`gh` 默认只申请基础 scope。用到高级功能时扩容：
+
+```bash
+gh auth refresh -h github.com -s admin:public_key          # 上传 SSH key
+gh auth refresh -h github.com -s admin:ssh_signing_key     # 签名用 SSH key
+gh auth refresh -h github.com -s delete_repo               # 删除仓库
+gh auth refresh -h github.com -s workflow                  # 改 Actions workflow
+```
+
+### 代理环境注意事项
+
+如果本机有 ClashX/Surge 等透明 HTTPS 代理，**优先用 HTTPS 协议**走 git。SSH over 443
+(`ssh.github.com:443`) 可能被代理 MITM 破坏签名。要走 SSH，需在代理规则里把
+`ssh.github.com` 和 `github.com` 设为 DIRECT 直连。
