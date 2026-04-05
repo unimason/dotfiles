@@ -1,0 +1,5 @@
+.DS_Store
+*.bak.*
+.claude/
+fish/.config/fish/fish_variables
+fish/.config/fish/completions/

@@ -1,0 +1,51 @@
+# Ghostty configuration
+# Docs: https://ghostty.org/docs/config/reference
+
+# ── Theme ───────────────────────────────────────────────────
+theme = catppuccin-mocha
+
+# ── Font ────────────────────────────────────────────────────
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+font-feature = +liga
+font-feature = +calt
+
+# ── Window ──────────────────────────────────────────────────
+window-padding-x = 14
+window-padding-y = 12
+window-padding-balance = true
+window-save-state = always
+background-opacity = 0.96
+unfocused-split-opacity = 0.85
+
+# ── Cursor ──────────────────────────────────────────────────
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = cursor,sudo,title
+
+# ── macOS specific (ignored on Linux) ───────────────────────
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+
+# ── Keybindings ─────────────────────────────────────────────
+# Splits
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+w=close_surface
+keybind = cmd+alt+left=goto_split:left
+keybind = cmd+alt+right=goto_split:right
+keybind = cmd+alt+up=goto_split:top
+keybind = cmd+alt+down=goto_split:bottom
+# Tabs
+keybind = cmd+t=new_tab
+keybind = cmd+shift+left=previous_tab
+keybind = cmd+shift+right=next_tab
+# Font size
+keybind = cmd+plus=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
+keybind = cmd+zero=reset_font_size
+
+# ── Misc ────────────────────────────────────────────────────
+copy-on-select = clipboard
+confirm-close-surface = false
+mouse-hide-while-typing = true
