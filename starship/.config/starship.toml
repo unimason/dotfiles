@@ -33,7 +33,7 @@ $cmd_duration\
 $line_break\
 $character"""
 
-palette = 'catppuccin_mocha'
+palette = 'catppuccin_latte'
 add_newline = true
 
 [os]

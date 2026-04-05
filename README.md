@@ -2,7 +2,7 @@
 
 跨平台（macOS + Linux）终端环境 — Mac 端 Claude Code vibe-coding，Linux 端机器人/自动驾驶开发。
 
-**Stack**: Ghostty · Fish · Starship 　**Theme**: Catppuccin Mocha
+**Stack**: Ghostty · Fish · Starship 　**Theme**: iTerm2 Solarized Light + Catppuccin Latte
 
 ---
 
@@ -89,8 +89,8 @@ chsh -s "$(command -v fish)"
 
 `starship.toml` 内已定义 4 种 Catppuccin 变体。改顶部这一行：
 ```toml
-palette = 'catppuccin_mocha'
-# 可选：catppuccin_frappe · catppuccin_latte · catppuccin_macchiato
+palette = 'catppuccin_latte'
+# 可选：catppuccin_mocha · catppuccin_frappe · catppuccin_macchiato
 ```
 
 ### 启用/禁用 Prompt 段
@@ -138,7 +138,7 @@ end
 
 | 维度 | 方案 | 理由 |
 |---|---|---|
-| 主题统一 | Catppuccin Mocha 贯穿 ghostty + starship + fzf | 视觉一致、跨 OS 都有支持 |
+| 主题统一 | Solarized Light (ghostty) + Catppuccin Latte (starship/fzf) | 浅色系协调，色温匹配 |
 | Prompt 行数 | 双行（信息行 + ❯ 输入行） | 长路径/大量元信息不挤压输入区 |
 | Hostname | `ssh_only = true` | 本地 Mac 不显示，远程 Linux 自动出现 |
 | Git abbr | `abbr` 代替 `alias` | 空格展开成完整命令，历史/屏幕共享可读 |

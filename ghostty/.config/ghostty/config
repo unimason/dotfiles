@@ -2,7 +2,7 @@
 # Docs: https://ghostty.org/docs/config/reference
 
 # ── Theme ───────────────────────────────────────────────────
-theme = catppuccin-mocha
+theme = iTerm2 Solarized Light
 
 # ── Font ────────────────────────────────────────────────────
 font-family = JetBrainsMono Nerd Font
