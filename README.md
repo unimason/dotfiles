@@ -113,8 +113,8 @@ min_time_to_notify = 45000    # 触发阈值（毫秒）
 ### 添加自定义 alias/abbr
 
 - **跨平台**：编辑 `fish/.config/fish/conf.d/10-aliases.fish`
-- **仅 macOS**：编辑 `conf.d/50-os-darwin.fish`
-- **仅 Linux**：编辑 `conf.d/50-os-linux.fish`
+- **仅 macOS**：编辑 `conf.d/05-os-darwin.fish`
+- **仅 Linux**：编辑 `conf.d/05-os-linux.fish`
 
 添加新 fish 函数：在 `fish/.config/fish/functions/` 下新建 `<name>.fish`，格式：
 ```fish
@@ -142,7 +142,7 @@ end
 | Prompt 行数 | 双行（信息行 + ❯ 输入行） | 长路径/大量元信息不挤压输入区 |
 | Hostname | `ssh_only = true` | 本地 Mac 不显示，远程 Linux 自动出现 |
 | Git abbr | `abbr` 代替 `alias` | 空格展开成完整命令，历史/屏幕共享可读 |
-| OS 隔离 | `50-os-{darwin,linux}.fish` 自守卫 | 同一 repo 跑两端，误执行自动退出 |
+| OS 隔离 | `05-os-{darwin,linux}.fish` 自守卫 | 同一 repo 跑两端，误执行自动退出 |
 | 工具降级 | `type -q xxx; and ...` 守卫 | 缺少工具不会报错 |
 | 调色板保留 | 4 个 Catppuccin 变体全部内嵌 | 切换主题零成本 |
 | 语言段保留 | 所有语言 section 都定义 | 未来进其他项目自动显示 |
@@ -173,7 +173,7 @@ A: 终端字体不是 Nerd Font。安装 JetBrainsMono Nerd Font 并在 Ghostty 
 A: 检查 fzf 版本 `fzf --version`，需要 ≥ 0.48（`--fish` 参数引入时间）。旧版本需手动 source integration 脚本。
 
 **Q: Linux 端 ROS 环境没自动 source**
-A: `conf.d/50-os-linux.fish` 需要 `bass`（fish 的 bash 兼容层）来 source `.bash` 文件：`fisher install edc/bass`。或手动把 ROS 变量重写为 fish 版本。
+A: `conf.d/05-os-linux.fish` 需要 `bass`（fish 的 bash 兼容层）来 source `.bash` 文件：`fisher install edc/bass`。或手动把 ROS 变量重写为 fish 版本。
 
 **Q: 修改了 dotfiles 但没生效**
 A: 文件是 symlink 指向仓库，改后立即生效。Fish 配置变更执行 `exec fish` 重载；Ghostty 配置改动仅影响**新窗口**。

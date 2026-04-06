@@ -1,4 +1,4 @@
-## CLAUDE.md
+# CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -40,7 +40,7 @@ After editing fish config, reload with `exec fish`. Ghostty config changes only 
 ## Adding new config
 
 - New cross-platform alias → `fish/.config/fish/conf.d/10-aliases.fish`
-- New macOS-only / Linux-only tweak → `05-os-darwin.fish` / `05-os-linux.fish` (README calls these `50-os-*.fish` in a couple of places — actual filenames are `05-os-*.fish`)
+- New macOS-only / Linux-only tweak → `05-os-darwin.fish` / `05-os-linux.fish`
 - New fish function → new file in `fish/.config/fish/functions/<name>.fish`
 - New top-level package → add a dir, add its name to `ALL_PACKAGES` in `install.sh:14`
 
