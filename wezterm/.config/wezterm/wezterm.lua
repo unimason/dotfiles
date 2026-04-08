@@ -22,7 +22,7 @@ config.colors = {
     "#268bd2", -- blue
     "#d33682", -- magenta
     "#2aa198", -- cyan
-    "#eee8d5", -- white
+    "#93a1a1", -- white (base1, visible on light bg)
   },
   brights = {
     "#002b36", -- bright black
@@ -32,7 +32,7 @@ config.colors = {
     "#839496", -- bright blue
     "#6c71c4", -- bright magenta
     "#93a1a1", -- bright cyan
-    "#fdf6e3", -- bright white
+    "#eee8d5", -- bright white
   },
 }
 
