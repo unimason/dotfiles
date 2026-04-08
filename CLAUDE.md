@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository purpose
 
-Cross-platform (macOS + Linux) terminal environment dotfiles: Ghostty + Fish + Starship. Mac side is for Claude Code work, Linux side for robotics/autonomous-driving dev. README.md is in Chinese and is the authoritative user-facing doc.
+Cross-platform (macOS + Linux + Windows) terminal environment dotfiles: Ghostty + Fish + Starship + WezTerm. Mac side is for Claude Code work, Linux side for robotics/autonomous-driving dev, Windows side for general dev. README.md is in Chinese and is the authoritative user-facing doc.
 
 ## Installation / common commands
 
@@ -21,7 +21,7 @@ After editing fish config, reload with `exec fish`. Ghostty config changes only 
 
 ## Architecture
 
-**Stow-compatible layout.** Each top-level package dir (`fish/`, `ghostty/`, `starship/`) mirrors a path that gets symlinked into `$HOME`. Example: `fish/.config/fish/config.fish` → `~/.config/fish/config.fish`. `install.sh` is a zero-dependency replacement for GNU stow — it `find`s every regular file under a package dir and creates symlinks, backing up pre-existing non-symlink files to `<file>.bak.<timestamp>`.
+**Stow-compatible layout.** Each top-level package dir (`fish/`, `ghostty/`, `starship/`, `wezterm/`) mirrors a path that gets symlinked into `$HOME`. Example: `fish/.config/fish/config.fish` → `~/.config/fish/config.fish`. `install.sh` is a zero-dependency replacement for GNU stow — it `find`s every regular file under a package dir and creates symlinks, backing up pre-existing non-symlink files to `<file>.bak.<timestamp>`.
 
 **Special case — Ghostty on macOS** (`install.sh:87-91`): macOS Ghostty also reads `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`, which **takes precedence over** `~/.config/ghostty/config` (the GUI menu writes there). The installer creates a symlink at that path too. If the user changes a theme via Ghostty's GUI, re-run `./install.sh ghostty` to restore the repo symlink.
 
@@ -33,7 +33,7 @@ After editing fish config, reload with `exec fish`. Ghostty config changes only 
 
 **Graceful degradation.** Tool integrations are guarded with `type -q <tool>; and ...` so missing tools never error out. This lets the same repo work on a freshly-cloned machine with partial tool installs.
 
-**Theme layering.** Ghostty uses Solarized Light; Starship uses Catppuccin Mocha pastel color blocks; fzf uses Catppuccin Latte. The four Catppuccin palettes are all embedded in `starship.toml` — switch by changing the single `palette = '...'` line at the top.
+**Theme layering.** Ghostty/WezTerm use Solarized Light; Starship uses Catppuccin Mocha pastel color blocks; fzf uses Catppuccin Latte. WezTerm config (`wezterm/.config/wezterm/wezterm.lua`) mirrors Ghostty's theme, fonts, padding, and keybindings (adapted for Windows with ALT instead of Cmd). WezTerm defaults to PowerShell 7 (`pwsh`) and loads Starship via the PowerShell profile. The four Catppuccin palettes are all embedded in `starship.toml` — switch by changing the single `palette = '...'` line at the top.
 
 **Git abbr over alias.** Git shortcuts use fish `abbr` (space-expands to full command) instead of `alias`, so shell history and screen-sharing remain readable.
 
@@ -42,6 +42,7 @@ After editing fish config, reload with `exec fish`. Ghostty config changes only 
 - New cross-platform alias → `fish/.config/fish/conf.d/10-aliases.fish`
 - New macOS-only / Linux-only tweak → `05-os-darwin.fish` / `05-os-linux.fish`
 - New fish function → new file in `fish/.config/fish/functions/<name>.fish`
+- New Windows-only tweak → `wezterm/.config/wezterm/wezterm.lua`
 - New top-level package → add a dir, add its name to `ALL_PACKAGES` in `install.sh:14`
 
 When adding a new file under an existing package, run `./install.sh <pkg>` once so the new symlink gets created.
