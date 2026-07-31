@@ -19,6 +19,9 @@ window-save-state = always
 background-opacity = 0.96
 unfocused-split-opacity = 0.85
 
+# ── Shell ───────────────────────────────────────────────────
+command = /opt/homebrew/bin/fish
+
 # ── Cursor ──────────────────────────────────────────────────
 cursor-style = block
 cursor-style-blink = false
