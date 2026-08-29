@@ -11,7 +11,7 @@
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ALL_PACKAGES=(fish ghostty starship)
+ALL_PACKAGES=(fish ghostty starship herdr)
 
 DRY_RUN=0
 UNINSTALL=0

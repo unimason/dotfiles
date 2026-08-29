@@ -1,0 +1,30 @@
+onboarding = false
+[theme]
+name = "solarized-light"
+auto_switch = false
+
+[terminal]
+# Match Ghostty's `command = /opt/homebrew/bin/fish`
+default_shell = "/opt/homebrew/bin/fish"
+
+[theme.custom]
+# Sidebar shares the terminal background by default, so it reads as
+# fused with the command pane. sidebar_bg (0.8.2+) gives it its own
+# background — Solarized base2, one step darker than the #fdf6e3 bg.
+sidebar_bg = "#eee8d5"
+# surface_dim draws the spaces/agents divider AND the sidebar/content
+# separator line — solarized-light's default value is too close to the
+# background to read. Solarized base1 gives both lines real contrast.
+surface_dim = "#93a1a1"
+
+[ui]
+pane_borders = true
+# outer edge border + gaps between panes = each pane reads as its own boxed
+# region (like the herdr.dev marketing mock), not shared tmux-style dividers
+pane_outer_borders = true
+pane_gaps = true
+show_agent_labels_on_pane_borders = true
+
+agent_panel_sort = "spaces"
+[ui.toast]
+delivery = "terminal"

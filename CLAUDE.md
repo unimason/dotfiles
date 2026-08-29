@@ -35,6 +35,8 @@ After editing fish config, reload with `exec fish`. Ghostty config changes only 
 
 **Theme layering.** Ghostty/WezTerm use Solarized Light; Starship uses Catppuccin Mocha pastel color blocks; fzf uses Catppuccin Latte. WezTerm config (`wezterm/.config/wezterm/wezterm.lua`) mirrors Ghostty's theme, fonts, padding, and keybindings (adapted for Windows with ALT instead of Cmd). WezTerm defaults to PowerShell 7 (`pwsh`) and loads Starship via the PowerShell profile. The four Catppuccin palettes are all embedded in `starship.toml` — switch by changing the single `palette = '...'` line at the top. WezTerm's ANSI white is overridden to Solarized base1 (`#93a1a1`) instead of the standard `#eee8d5`, because the latter is invisible on the Solarized Light background.
 
+**herdr** (`herdr/.config/herdr/config.toml`) is the terminal AI-agent multiplexer run inside Ghostty. Its config mirrors Ghostty: `theme.name = "solarized-light"` matches Ghostty's `iTerm2 Solarized Light`, and `terminal.default_shell` matches Ghostty's `command` (fish). Only `config.toml` is tracked here — herdr's runtime state (`session.json`, `*.sock`, `*.log`) lives outside the repo and is never symlinked.
+
 **PowerShell profile** (`$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`) is **not** managed by `install.sh` — it lives directly on the Windows machine and is not symlinked from the repo. It loads Starship and sets PSReadLine's `InlinePrediction` color to Solarized base0 (`#839496`) so autocomplete suggestions are visible on the light background.
 
 **Git abbr over alias.** Git shortcuts use fish `abbr` (space-expands to full command) instead of `alias`, so shell history and screen-sharing remain readable.
